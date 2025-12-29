@@ -1,12 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import AuthRedirect from "./pages/AuthRedirect";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<AuthRedirect />} />
+        <Route path="/reset-password" element={<AuthRedirect />} />
+        <Route path="/create-password" element={<AuthRedirect />} />
+        <Route path="/magic-link" element={<AuthRedirect />} />
+        <Route path="/email-change" element={<AuthRedirect />} />
       </Routes>
     </BrowserRouter>
   );
