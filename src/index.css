@@ -1,68 +1,91 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@theme {
+  /* Marca — worthandwill/lib/core/app_colors.dart */
+  --color-navy: #2a3b69;
+  --color-cyan: #36c4ec;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Superficies oscuras — lib/core/theme/app_theme.dart (_darkScheme) */
+  --color-navy-deep: #0f1626;
+  --color-navy-surface: #131f32;
+  --color-navy-elevated: #1b2842;
+  --color-navy-container: #16243a;
+  --color-outline: #3e4b63;
+  --color-outline-soft: #2f3c56;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* Superficies claras */
+  --color-surface: #f7faf8;
+  --color-surface-card: #f9fbfa;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  /* Tinta: sólidas a propósito — un navy con alfa sobre surface no llega a AA */
+  --color-ink: #0f1626;
+  --color-ink-muted: #555a65;
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+  /* Categorías — plantillas reales:
+     lib/features/categories/domain/category_templates.dart */
+  --color-cat-propiedades: #3b82f6;
+  --color-cat-bancos: #22c55e;
+  --color-cat-vehiculos: #f59e0b;
+  --color-cat-inversiones: #8b5cf6;
+  /* Resto de la paleta rápida del formulario (category_form_sheet.dart:47-52).
+     #EF4444 existe como opción del usuario pero no como plantilla: es el color
+     destructivo de la app. */
+  --color-cat-rosa: #ec4899;
+  --color-cat-otros: #9e9e9e;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+  /* Semánticos: solo subida/bajada, nunca decorativos */
+  --color-up: #10b981;
+  --color-down: #ef4444;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-field: 0.75rem;
+  --radius-phone: 2.25rem;
+
+  --shadow-card: 0 1px 2px rgb(15 22 38 / 0.05), 0 12px 32px -16px rgb(15 22 38 / 0.2);
+  --shadow-phone: 0 32px 70px -24px rgb(15 22 38 / 0.55);
+
+  --animate-rise: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: only light;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

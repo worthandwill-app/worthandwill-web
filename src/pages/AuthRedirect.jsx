@@ -19,9 +19,17 @@ export default function AuthRedirect() {
   }, [location]);
 
   return (
-    <div style={{ padding: 32 }}>
-      <h2>Abriendo Worthandwill…</h2>
-      <p>Si no se abre automáticamente, regresa a la app.</p>
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-navy px-6 text-center text-white">
+      <img
+        src="/logo-ww-mark-white.svg"
+        alt=""
+        aria-hidden="true"
+        className="h-14 w-auto"
+      />
+      <h1 className="text-2xl font-semibold tracking-tight">Abriendo Worth &amp; Will…</h1>
+      <p className="max-w-sm text-white/75">
+        Si no se abre automáticamente, regresa a la app desde tu pantalla de inicio.
+      </p>
     </div>
   );
 }
